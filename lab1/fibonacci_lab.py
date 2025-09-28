@@ -30,7 +30,7 @@ def memoised_fib(n):
     return res
 
 if __name__ == "__main__":
-    nums = (i for i in range(20,35+1,5))
+    nums = (i for i in range(35,19,-5))
     counts=[[],[]]
     for num in nums:
         #return a tuple (n, nth number, calls)
