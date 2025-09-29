@@ -1,4 +1,5 @@
 import keyboard
+from termcolor import colored, cprint
 
 rows,cols=10,10
 grid = [[0 for _ in range(cols)] for _ in range(rows)]
