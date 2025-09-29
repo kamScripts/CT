@@ -47,6 +47,9 @@ def find_pair(numbers:list[int], target:int)->bool:
 
 # Lab 3
 # Which function is the bottleneck and why?
+# append_to_list create a bottleneck as it is called 10000 times,
+# it has highest cumulative time just right before create_lookup function.
+# This function has complexity of O(n^2) caused by nested loop.
 def create_lookup():
     return {i: i * i for i in range(5000)}
 
@@ -72,5 +75,5 @@ def main():
     lookup = create_lookup()
     process_items(range(100), lookup)
 
-
+cProfile.run('main()', sort="cumtime")
 # Run the profiler https://docs.python.org/3/library/profile.html
