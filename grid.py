@@ -54,20 +54,52 @@ def arrow_up(grid, row,col):
         increment_grid_item(grid,row,col, inc=False)
         
     display_grid(grid)
+def arrow_down(grid, row, col):
+    if row == len(grid) - 1:
+        increment_grid_item(grid, 0, col)
+        increment_grid_item(grid, row, col, inc=False)
+    else:
+        increment_grid_item(grid, row + 1, col)
+        increment_grid_item(grid, row, col, inc=False)
+    display_grid(grid)
+
+def arrow_left(grid, row, col):
+    if col == 0:
+        increment_grid_item(grid, row, -1)
+        increment_grid_item(grid, row, col, inc=False)
+    else:
+        increment_grid_item(grid, row, col - 1)
+        increment_grid_item(grid, row, col, inc=False)
+    display_grid(grid)
+
+def arrow_right(grid, row, col):
+    if col == len(grid[0]) - 1:
+        increment_grid_item(grid, row, 0)
+        increment_grid_item(grid, row, col, inc=False)
+    else:
+        increment_grid_item(grid, row, col + 1)
+        increment_grid_item(grid, row, col, inc=False)
+    display_grid(grid)
+
 
 def on_key_up(event)->None:
-    global grid, x, y
-   
+    global grid, x, y   
     match event.name:
         case "up":
-            arrow_up(grid, x,y)
-            if x == 0:
-                x=9
-            else:
-                x-=1
-            print(x,y)
+            arrow_up(grid, x, y)
+            x = 9 if x == 0 else x - 1
+        case "down":
+            arrow_down(grid, x, y)
+            x = 0 if x == len(grid) - 1 else x + 1
+        case "left":
+            arrow_left(grid, x, y)
+            y = 9 if y == 0 else y - 1
+        case "right":
+            arrow_right(grid, x, y)
+            y = 0 if y == len(grid[0]) - 1 else y + 1
         case _:
             print("press the arrow keys or esc")
+
 def main():
     
     for key in ['up', 'down', 'left', 'right']:
