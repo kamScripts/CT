@@ -42,9 +42,18 @@ def display_grid(arr:list)->None:
     arr: list of any type
     Returns: None
     """
-    for r in arr:
-        print("  ".join(map(str, r)))
+    global x,y
+    for i, row in enumerate(arr):
+        row_display = []
+        for j, val in enumerate(row):
+            if i == x and j == y:
+                row_display.append(colored(str(val), 'light_green'))
+            else:
+                row_display.append(str(val))
+        print("  ".join(row_display))
     print("\n")
+
+
 def arrow_up(grid, row,col):
     if row==0:
         increment_grid_item(grid,-1,col)
@@ -54,7 +63,6 @@ def arrow_up(grid, row,col):
         increment_grid_item(grid,row-1,col)
         increment_grid_item(grid,row,col, inc=False)
         
-    display_grid(grid)
 def arrow_down(grid, row, col):
     if row == len(grid) - 1:
         increment_grid_item(grid, 0, col)
@@ -62,7 +70,6 @@ def arrow_down(grid, row, col):
     else:
         increment_grid_item(grid, row + 1, col)
         increment_grid_item(grid, row, col, inc=False)
-    display_grid(grid)
 
 def arrow_left(grid, row, col):
     if col == 0:
@@ -71,7 +78,6 @@ def arrow_left(grid, row, col):
     else:
         increment_grid_item(grid, row, col - 1)
         increment_grid_item(grid, row, col, inc=False)
-    display_grid(grid)
 
 def arrow_right(grid, row, col):
     if col == len(grid[0]) - 1:
@@ -80,7 +86,7 @@ def arrow_right(grid, row, col):
     else:
         increment_grid_item(grid, row, col + 1)
         increment_grid_item(grid, row, col, inc=False)
-    display_grid(grid)
+
 
 
 def on_key_up(event)->None:
@@ -89,15 +95,19 @@ def on_key_up(event)->None:
         case "up":
             arrow_up(grid, x, y)
             x = 9 if x == 0 else x - 1
+            display_grid(grid)
         case "down":
             arrow_down(grid, x, y)
             x = 0 if x == len(grid) - 1 else x + 1
+            display_grid(grid)
         case "left":
             arrow_left(grid, x, y)
             y = 9 if y == 0 else y - 1
+            display_grid(grid)
         case "right":
             arrow_right(grid, x, y)
             y = 0 if y == len(grid[0]) - 1 else y + 1
+            display_grid(grid)
         case _:
             print("press the arrow keys or esc")
 
