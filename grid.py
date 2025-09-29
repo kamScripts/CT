@@ -1,3 +1,10 @@
+import keyboard
+
+rows,cols=10,10
+grid = [[0 for _ in range(cols)] for _ in range(rows)]
+grid[0][0]=1
+x,y=0,0
+
 def create_grid(size: int,fill:int=0)->list:
     """
     Create size x size grid filled with 0 as default.
@@ -37,17 +44,38 @@ def display_grid(arr:list)->None:
     for r in arr:
         print("  ".join(map(str, r)))
     print("\n")
+def arrow_up(grid, row,col):
+    if row==0:
+        increment_grid_item(grid,-1,col)
+        increment_grid_item(grid,row,col, inc=False)
+        
+    else:
+        increment_grid_item(grid,row-1,col)
+        increment_grid_item(grid,row,col, inc=False)
+        
+    display_grid(grid)
+
+def on_key_up(event)->None:
+    global grid, x, y
+   
+    match event.name:
+        case "up":
+            arrow_up(grid, x,y)
+            if x == 0:
+                x=9
+            else:
+                x-=1
+            print(x,y)
+        case _:
+            print("press the arrow keys or esc")
+def main():
+    
+    for key in ['up', 'down', 'left', 'right']:
+        keyboard.on_release_key(key, on_key_up)
+
+    keyboard.wait('esc')
 
 
 if __name__ == "__main__":
-    grid=create_grid(10)
-    increment_grid_item(grid,0,0)
     display_grid(grid)
-    print(id(grid[0]), id(grid[1]), id(grid[2]))
-    # solution from the presentation
-    rows,cols=10,10
-    #matrixConst = list([[0] * 10] * 10)
-    #matrixRange = [list(range(10))] *10
-    matrixCompr = [[0 for _ in range(cols)] for _ in range(rows)]
-    display_grid(matrixCompr)
-    print(id(matrixCompr[0]), id(matrixCompr[1]), id(matrixCompr[2]))    
+    main()
