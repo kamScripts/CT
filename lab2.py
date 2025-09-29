@@ -10,7 +10,7 @@ def create_grid(size: int,fill:int=0)->list:
     arr=[]
     for i in range(size):
         arr.append([])
-        for j in range(size):
+        for _ in range(size):
             arr[i].append(fill)
     return arr
 def increment_grid_item(arr:list[int],row:int,col:int, inc:bool=True)->None:
@@ -38,13 +38,16 @@ def display_grid(arr:list)->None:
         print("  ".join(map(str, r)))
     print("\n")
 
-# solution from the presentation
-matrixConst = list([[0] * 10] * 10)
-matrixRange = [list(range(10))] *10
-matrixCompr = [[0 for _ in range(10)] for _ in range(10)]
+
 if __name__ == "__main__":
-    grid=create_grid(10)    
+    grid=create_grid(10)
     increment_grid_item(grid,0,0)
     display_grid(grid)
-    display_grid(matrixCompr)
     print(id(grid[0]), id(grid[1]), id(grid[2]))
+    # solution from the presentation
+    rows,cols=10,10
+    #matrixConst = list([[0] * 10] * 10)
+    #matrixRange = [list(range(10))] *10
+    matrixCompr = [[0 for _ in range(cols)] for _ in range(rows)]
+    display_grid(matrixCompr)
+    print(id(matrixCompr[0]), id(matrixCompr[1]), id(matrixCompr[2]))    

@@ -15,6 +15,7 @@ def has_duplicates_slow(numbers: list[int]) -> bool:
     return False
 #Each loop through the list multiplies time complexity by its length
 # Your fast version here
+# Hint: Use membership testing
 def has_duplicates_fast(numbers: list[int]) -> bool:
     """
     Looks up for duplicates using testing set membership.
@@ -31,13 +32,18 @@ def has_duplicates_fast(numbers: list[int]) -> bool:
             return True
         memo.add(num)
     return False
-print(has_duplicates_fast([1,2,3]), has_duplicates_fast([1,2,1]))
-
-# Hint: Use membership testing
-def has_duplicates_fast(numbers: list[int]):
-    # Your fast version here
-    pass # remove this line when you have implemented your function
-
+#print(has_duplicates_fast([1,2,3]), has_duplicates_fast([1,2,1]))
+def find_pair(numbers:list[int], target:int)->bool:
+    """
+    Returns true if any pair of numbers from the list adds up to a target number.
+    """
+    seen = set()
+    for num in numbers:
+        #Test membership in sets is O(1)
+        if target - num in seen:
+            return True
+        seen.add(num)
+    return False
 
 # Lab 3
 # Which function is the bottleneck and why?
