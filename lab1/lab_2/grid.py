@@ -118,9 +118,10 @@ def on_key_up(event)->None:
             print("press the arrow keys or esc")
 
 def main():
+
     for key in ['up', 'down', 'left', 'right']:
         keyboard.on_release_key(key, on_key_up)
-        
+
     keyboard.wait('esc')
 
 
