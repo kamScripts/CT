@@ -1,5 +1,5 @@
 def binary_search(data,target, low, high):
-    """Example from Goodrich et al. Data Structures & Algorithms"""
+    """Example from Goodrich et al. Data Structures & Algorithms(2013)"""
     if low > high:
         return False
     else:
