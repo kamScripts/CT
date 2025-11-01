@@ -16,7 +16,7 @@ def disk_usage(path:str)->int:
         for filename in os.listdir(path):                  # for each child
             childpath=os.path.join(path, filename)         #compose a full path to a child
             total+=disk_usage(childpath)                   # add child's usage to total
-    print('{0:<7}'.format(total), path)
+    print(f'{total:<7} {path}')
     return total
 disk_usage('C:\\netbeans')
             
