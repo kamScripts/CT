@@ -12,12 +12,10 @@ class Arraydeque:
         """Return length of the deque."""
         return self._size
     def add_first(self,e)->None:
-        answer=self._data[self._front]
         self._front = (self._front - 1) % len(self._data)
         self._data[self._front] = e
         self._size+=1
         
-        return answer
     def add_last(self,e)->None:
         """Add element e to the back of a deque."""
         if self._size==len(self._data):
@@ -32,7 +30,7 @@ class Arraydeque:
             raise Empty('Deque is empty')
         answer=self._data[self._front]
         self._data[self._front] = None
-        self._front = (self._front - 1) % len(self._data)
+        self._front = (self._front + 1) % len(self._data)
         self._size-=1
         return answer
         
@@ -69,6 +67,7 @@ class Arraydeque:
             self._data[k]=old[walk]
             walk=(1 + walk) % len(old)
         self._front = 0
+        
 if __name__=="__main__":
     
     d=Arraydeque()
@@ -84,5 +83,14 @@ if __name__=="__main__":
     d.add_first(6)
     print('last', d.last(), sep=' -> ')
     d.add_first(8)
+    d.add_first(1)
+    d.add_first(62)
+
+
     print(d.is_empty())
     print('last', d.last(), sep=' -> ')
+    print('deque:',d._data,sep=' -> ')
+    print('delete first', d.delete_first(), sep=' -> ')
+    print(d._front)
+
+
