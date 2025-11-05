@@ -9,7 +9,7 @@ def insertion_sort(A):
         while j>0 and A[j-1]>current:#element A[j-1] must be after current
             A[j]=A[j-1]
             j-=1
-        A[j]=current #current el in the right place
+        A[j]=current #current el in the right place#
         
 if __name__=="__main__":
     lst=[4,1,4,5,2,9]
