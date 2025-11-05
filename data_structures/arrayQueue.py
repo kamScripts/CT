@@ -49,3 +49,8 @@ class ArrayQueue:
             self._data[k]=old[walk] #intentionally shift indices
             walk=(1+walk)%len(old)  #use old size as modulus
         self._front=0               #front has been realigned
+
+q=ArrayQueue()
+q.enqueue(5)
+q.enqueue(3)
+print(q.first())
