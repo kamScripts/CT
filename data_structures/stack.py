@@ -6,7 +6,7 @@ class Stack:
             return f"Stack(top → bottom): {list(reversed(self.items))}"
 
     def __repr__(self):
-        return f"Stack(items={self.items})"
+        return self.items
 
 
     def push(self,value):

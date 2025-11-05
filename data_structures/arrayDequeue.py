@@ -2,7 +2,7 @@ class Empty(Exception):
     """Empty deque exception"""
 class Arraydeque:
     """The Deque Abstract Data Type (ADT)"""
-    DEFAULT_CAPACITY=10 #moderate capacity for all new queues
+    DEFAULT_CAPACITY=5 #moderate capacity for all new queues
     def __init__(self)->None:
         self._data=[None]*Arraydeque.DEFAULT_CAPACITY
         self._size=0
@@ -11,7 +11,17 @@ class Arraydeque:
     def __len__(self):
         """Return length of the deque."""
         return self._size
+    def __str__(self):
+        result = []
+        for i in range(self._size):
+            index = (self._front + i) % len(self._data)
+            result.append(str(self._data[index]))
+        return ' <- '.join(result)
+
     def add_first(self,e)->None:
+        """Add element to the front of deque."""
+        if self._size == len(self._data):
+            self._resize(2 * len(self._data))
         self._front = (self._front - 1) % len(self._data)
         self._data[self._front] = e
         self._size+=1
@@ -75,22 +85,23 @@ if __name__=="__main__":
     d.add_first(3)
     d.add_first(7)
     print('deque:',d._data,sep=' -> ')
+    print(d)
     print('first',d.first(), sep=' -> ')
-    print('delete last', d.delete_last(), sep=' -> ')
-    print('len(d)', len(d), sep=' -> ')
-    print('delete last', d.delete_last(), sep=' -> ')
-    print('delete last', d.delete_last(), sep=' -> ')
-    d.add_first(6)
-    print('last', d.last(), sep=' -> ')
-    d.add_first(8)
-    d.add_first(1)
-    d.add_first(62)
-
-
-    print(d.is_empty())
-    print('last', d.last(), sep=' -> ')
-    print('deque:',d._data,sep=' -> ')
-    print('delete first', d.delete_first(), sep=' -> ')
-    print(d._front)
+#    print('delete last', d.delete_last(), sep=' -> ')
+#    print('len(d)', len(d), sep=' -> ')
+#    print('delete last', d.delete_last(), sep=' -> ')
+#    print('delete last', d.delete_last(), sep=' -> ')
+#    d.add_first(6)
+#    print('last', d.last(), sep=' -> ')
+#    d.add_first(8)
+#    d.add_first(1)
+#    d.add_first(62)
+#
+#
+#    print(d.is_empty())
+#    print('last', d.last(), sep=' -> ')
+#    print('deque:',d._data,sep=' -> ')
+#    print('delete first', d.delete_first(), sep=' -> ')
+#    print(d._front)
 
 
