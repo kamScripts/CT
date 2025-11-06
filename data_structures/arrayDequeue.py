@@ -46,6 +46,8 @@ class Arraydeque:
         """Remove and return first element from deque"""
         if self.is_empty():
             raise Empty('Deque is empty')
+        if 0 < self._size < len(self._data) // 4:        #Shrink array if items falls bellow 1/4 capacity
+            self._resize(len(self._data) // 2)
         answer=self._data[self._front]
         self._data[self._front] = None
         self._front = (self._front + 1) % len(self._data)
@@ -56,6 +58,8 @@ class Arraydeque:
         """Remove and return last element from deque"""
         if self.is_empty():
             raise Empty('Deque is empty')
+        if 0 < self._size < len(self._data) // 4:        #Shrink array if items falls bellow 1/4 capacity
+            self._resize(len(self._data) // 2)
         answer = self._data[(self._front+self._size-1) % len(self._data)]
         self._data[(self._front+self._size-1) % len(self._data)] = None
         self._size -= 1

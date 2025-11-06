@@ -28,6 +28,8 @@ class ArrayQueue:
         Raise exception if queue is empty"""
         if self.is_empty():
             raise Empty('Queue is empty')
+        if 0 < self._size < len(self._data) // 4:   #Shrink array if items falls bellow 1/4 capacity
+            self._resize(len(self._data) // 2)
         answer=self._data[self._front]
         self._data[self._front]=None                #help garbage collection
         self._front=(self._front+1)%len(self._data) # modulo op for next index in circular array
@@ -53,4 +55,9 @@ class ArrayQueue:
 q=ArrayQueue()
 q.enqueue(5)
 q.enqueue(3)
+q.enqueue(8)
+print(len(q._data))
+q.dequeue()
+
+print(q._data)
 print(q.first())
