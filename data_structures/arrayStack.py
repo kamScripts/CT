@@ -1,5 +1,7 @@
 class Empty(Exception):
-    """Error attempting to access an element from an empty container."""
+    """Exception attempting to access an element from an empty container."""
+class Full(Exception):
+    """Exception attempting to push into full stack."""
 class ArrayStack:
     """Example from Goodrich et al. Data Structures & Algorithms(2013)
     LIFO Stack implementation using a Python list as underlying storage
@@ -32,3 +34,17 @@ class ArrayStack:
         if self.is_empty():
             raise Empty('Stack is empty')
         return self._data.pop()
+    def transfer(self,s,t):
+        """Transfer Stack S into  empty T where S,last=t.top"""
+        for _ in range(len(S)):
+            t.push(s.pop())
+        
+l=[1,2,3,4,5]
+S=ArrayStack()
+
+for num in l:
+    S.push(num)
+print(S.top(),S._data, sep=('-> '))
+T=ArrayStack()
+T.transfer(S,T)
+print(T.top(),T._data,sep='-> ')
