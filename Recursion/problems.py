@@ -21,10 +21,13 @@ def sumList(lst: list[int | float]) -> int | float | None:
         return lst[0] + sumList(lst[1:]) # type: ignore
     except ValueError:
         return None
-
+def factorial(num:int)->int:
+    """Find factorial of a number."""
+    return num * factorial(num-1) if num >1 else num
 
 if __name__=='__main__':
 
     #print(reverse_string('software development'))
     print(recursive_palindrome('racecar'))
     print(sumList([1,2,3,4]), sumList([x for x in range(100)]), sep='\t')
+    print(factorial(5), 1*2*3*4*5)
