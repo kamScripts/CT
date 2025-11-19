@@ -40,4 +40,4 @@ if __name__=='__main__':
     #print(recursive_palindrome('racecar'))
     #print(sumList([1,2,3,4]), sumList([x for x in range(100)]), sep='\t')
     #print(factorial(5), 1*2*3*4*5)
-    print(find_n_fibo(50))
+    print(find_n_fibo(12))
