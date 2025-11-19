@@ -27,4 +27,7 @@ def merge_sort(S):
     merge_sort(S2)  #sort copy of second half
     # merge results
     merge(S1,S2,S)
-    
+
+lst= [5,12,45,2,5,1,923,1,4,6,4,12,34,32,1]
+merge_sort(lst)
+print(lst)
