@@ -13,8 +13,18 @@ def recursive_palindrome(s:str)->bool:
         return False
     return recursive_palindrome(s[1:-1])
 
+def sumList(lst: list[int | float]) -> int | float | None:
+    """Sum numerical elements of a list"""
+    try:
+        if len(lst)==1:
+            return lst[0]
+        return lst[0] + sumList(lst[1:]) # type: ignore
+    except ValueError:
+        return None
+
 
 if __name__=='__main__':
 
     #print(reverse_string('software development'))
     print(recursive_palindrome('racecar'))
+    print(sumList([1,2,3,4]), sumList([x for x in range(100)]), sep='\t')
