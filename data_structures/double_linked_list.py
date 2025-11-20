@@ -1,5 +1,8 @@
 class _DoublyLinkedList:
-    """A base class providing aDoubly Linked List representation."""
+    """
+    Example from Goodrich et al. Data Structures & Algorithms(2013)
+
+    A base class providing aDoubly Linked List representation."""
     
     class _Node:
         """Lightwieght, nonpublic class for storing a doubly linked node."""
